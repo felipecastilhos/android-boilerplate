@@ -37,9 +37,4 @@ public class BoilerplateApplication extends Application  {
         }
         return mApplicationComponent;
     }
-
-    // Needed to replace the component with a test specific one
-    public void setComponent(ApplicationComponent applicationComponent) {
-        mApplicationComponent = applicationComponent;
-    }
 }
