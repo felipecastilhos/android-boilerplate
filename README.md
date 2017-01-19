@@ -41,51 +41,34 @@ Imagine que você tem que implementar uma tela de sign.
 6. Faça sua `ActivitySignIn` implementar `SignInMvpView` e implementar os métodos necessários `showSignInSuccessful()`
 8. Na sua activity, injetar uma nova instância de `SignInPresenter` e chamar `presenter.attachView(this)` no `onCreate` e `presenter.detachView()` no `onDestroy()`. Também configurar um listener no para chamar `presenter.signIn(email)`.
 
-## Code Quality
+## Qualidade de código
 
-This project integrates a combination of unit tests, functional test and code analysis tools.
+Esse projeto tem integração com ferramentas de análise de código. É fortemente recomendado utilizar os scripts de análise antes de realizar o commit para o repositório. Evitando sempre realizar commits com alertas e erros sendo detectados pelos scripts.
 
-### Tests
+### Ferramentas de análise de código
 
-To run **unit** tests on your machine:
+As seguintes ferramentas de análise de código que estão configuradas para este projeto:
 
-```
-./gradlew test
-```
-
-To run **functional** tests on connected devices:
-
-```
-./gradlew connectedAndroidTest
-```
-
-Note: For Android Studio to use syntax highlighting for Automated tests and Unit tests you **must** switch the Build Variant to the desired mode.
-
-### Code Analysis tools
-
-The following code analysis tools are set up on this project:
-
-* [PMD](https://pmd.github.io/): It finds common programming flaws like unused variables, empty catch blocks, unnecessary object creation, and so forth. See [this project's PMD ruleset](config/quality/pmd/pmd-ruleset.xml).
+* [PMD](https://pmd.github.io/): Localiza as falhas mais simples como variáveis não utilizadas, blocos de Try/Catch vazios, criação desnecessária de objetos e assim por diante. Veja [this project's PMD ruleset](config/quality/pmd/pmd-ruleset.xml).
 
 ```
 ./gradlew pmd
 ```
 
-* [Findbugs](http://findbugs.sourceforge.net/): This tool uses static analysis to find bugs in Java code. Unlike PMD, it uses compiled Java bytecode instead of source code.
+* [Findbugs](http://findbugs.sourceforge.net/): Esta ferramenta usa uma análise estática para acar bugs no código Java. Ao contrário do PMD, ela usa bytecodes compilados do Java ao invés do código fonte.
 
 ```
 ./gradlew findbugs
 ```
 
-* [Checkstyle](http://checkstyle.sourceforge.net/): It ensures that the code style follows [our Android code guidelines](https://github.com/ribot/android-guidelines/blob/master/project_and_code_guidelines.md#2-code-guidelines). See our [checkstyle config file](config/quality/checkstyle/checkstyle-config.xml).
+* [Checkstyle](http://checkstyle.sourceforge.net/): Garante que o estilo do cógigo siga o padrão [our Android code guidelines](https://github.com/ribot/android-guidelines/blob/master/project_and_code_guidelines.md#2-code-guidelines). See our [checkstyle config file](config/quality/checkstyle/checkstyle-config.xml).
 
 ```
 ./gradlew checkstyle
 ```
 
 ### The check task
-
-To ensure that your code is valid and stable use check:
+Para garantir que o seu código é válido e estável use:
 
 ```
 ./gradlew check
