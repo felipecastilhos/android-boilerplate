@@ -1,12 +1,11 @@
 # Android Boilerplate
+Este projeto usa como referência o modelo usado pela [ribot](http://ribot.co.uk). Serve para iniciar com uma arquitetura, as ferramentas e guidelines a serem utilizadas para desenvolver um aplicativo Android.
 
-Sample Android app that we use at [ribot](http://ribot.co.uk) as a reference for new Android projects. It demonstrates the architecture, tools and guidelines that we use when developing for the Android platform (https://github.com/ribot/android-guidelines)
-
-Libraries and tools included:
+Bibliotecas e ferramentas utilizadas:
 
 - Support libraries
-- RecyclerViews and CardViews 
-- [RxJava](https://github.com/ReactiveX/RxJava) and [RxAndroid](https://github.com/ReactiveX/RxAndroid) 
+- RecyclerViews e CardViews
+- [RxJava](https://github.com/ReactiveX/RxJava) and [RxAndroid](https://github.com/ReactiveX/RxAndroid)
 - [Retrofit 2](http://square.github.io/retrofit/)
 - [Dagger 2](http://google.github.io/dagger/)
 - [SqlBrite](https://github.com/square/sqlbrite)
@@ -14,12 +13,9 @@ Libraries and tools included:
 - [Timber](https://github.com/JakeWharton/timber)
 - [Glide](https://github.com/bumptech/glide)
 - [AutoValue](https://github.com/google/auto/tree/master/value) with extensions [AutoValueParcel](https://github.com/rharter/auto-value-parcel) and [AutoValueGson](https://github.com/rharter/auto-value-gson)
-- Functional tests with [Espresso](https://google.github.io/android-testing-support-library/docs/espresso/index.html)
-- [Robolectric](http://robolectric.org/)
-- [Mockito](http://mockito.org/)
 - [Checkstyle](http://checkstyle.sourceforge.net/), [PMD](https://pmd.github.io/) and [Findbugs](http://findbugs.sourceforge.net/) for code analysis
 
-## Requirements
+## Requerimentos
 
 - JDK 1.8
 - [Android SDK](http://developer.android.com/sdk/index.html).
@@ -29,50 +25,49 @@ Libraries and tools included:
 
 ## Architecture
 
-This project follows ribot's Android architecture guidelines that are based on [MVP (Model View Presenter)](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93presenter). Read more about them [here](https://github.com/ribot/android-guidelines/blob/master/architecture_guidelines/android_architecture.md). 
+Esse projeto segue a arquitetura baseada em [MVP (Model View Presenter)](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93presenter). Para saber mais leia [here](https://github.com/ribot/android-guidelines/blob/master/architecture_guidelines/android_architecture.md).
 
 ![](https://github.com/ribot/android-guidelines/raw/master/architecture_guidelines/architecture_diagram.png)
 
-### How to implement a new screen following MVP
+### Como implementar uma nova tela seguindo o MVP
 
-Imagine you have to implement a sign in screen. 
+Imagine que você tem que implementar uma tela de sign.
 
-1. Create a new package under `ui` called `signin`
-2. Create an new Activity called `ActivitySignIn`. You could also use a Fragment.
-3. Define the view interface that your Activity is going to implement. Create a new interface called `SignInMvpView` that extends `MvpView`. Add the methods that you think will be necessary, e.g. `showSignInSuccessful()`
-4. Create a `SignInPresenter` class that extends `BasePresenter<SignInMvpView>`
-5. Implement the methods in `SignInPresenter` that your Activity requires to perform the necessary actions, e.g. `signIn(String email)`. Once the sign in action finishes you should call `getMvpView().showSignInSuccessful()`.
-6. Create a `SignInPresenterTest`and write unit tests for `signIn(email)`. Remember to mock the  `SignInMvpView` and also the `DataManager`.
-7. Make your  `ActivitySignIn` implement `SignInMvpView` and implement the required methods like `showSignInSuccessful()`
-8. In your activity, inject a new instance of `SignInPresenter` and call `presenter.attachView(this)` from `onCreate` and `presenter.detachView()` from `onDestroy()`. Also, set up a click listener in your button that calls `presenter.signIn(email)`.
+1. Criar um novo pacote dentro de `ui` chamado `signin`.
+2. Criar uma nova Activity chamda `ActivitySignIn`. Também pode ser usado um fragment.
+3. Definir uma interface para a view que a Activity irá implementar. Neste caso crie uma interface chamada `SignInMvpView` que extende `MvpView`. Adicione métodos que você considera necessário. Ex.: `showSignInSuccessful()`
+4. Criar uma classe `SignInPresenter` que extende `BasePresenter<SignInMvpView>`
+5. Implementar um método em `SignInPresenter` que sua Activity precisa para realizar alguma ação necessária. Ex.:`signIn(String email)`. Assim que a ação de sign in for finalizada você deve chamar `getMvpView().showSignInSuccessful()`.
+6. Faça sua `ActivitySignIn` implementar `SignInMvpView` e implementar os métodos necessários `showSignInSuccessful()`
+8. Na sua activity, injetar uma nova instância de `SignInPresenter` e chamar `presenter.attachView(this)` no `onCreate` e `presenter.detachView()` no `onDestroy()`. Também configurar um listener no para chamar `presenter.signIn(email)`.
 
 ## Code Quality
 
-This project integrates a combination of unit tests, functional test and code analysis tools. 
+This project integrates a combination of unit tests, functional test and code analysis tools.
 
 ### Tests
 
 To run **unit** tests on your machine:
 
-``` 
+```
 ./gradlew test
-``` 
+```
 
 To run **functional** tests on connected devices:
 
-``` 
+```
 ./gradlew connectedAndroidTest
-``` 
+```
 
 Note: For Android Studio to use syntax highlighting for Automated tests and Unit tests you **must** switch the Build Variant to the desired mode.
 
-### Code Analysis tools 
+### Code Analysis tools
 
 The following code analysis tools are set up on this project:
 
 * [PMD](https://pmd.github.io/): It finds common programming flaws like unused variables, empty catch blocks, unnecessary object creation, and so forth. See [this project's PMD ruleset](config/quality/pmd/pmd-ruleset.xml).
 
-``` 
+```
 ./gradlew pmd
 ```
 
@@ -90,7 +85,7 @@ The following code analysis tools are set up on this project:
 
 ### The check task
 
-To ensure that your code is valid and stable use check: 
+To ensure that your code is valid and stable use check:
 
 ```
 ./gradlew check
@@ -99,7 +94,7 @@ To ensure that your code is valid and stable use check:
 This will run all the code analysis tools and unit tests in the following order:
 
 ![Check Diagram](images/check-task-diagram.png)
- 
+
 ## Distribution
 
 The project can be distributed using either [Crashlytics](http://support.crashlytics.com/knowledgebase/articles/388925-beta-distributions-with-gradle) or the [Google Play Store](https://github.com/Triple-T/gradle-play-publisher).
@@ -125,12 +120,12 @@ To upload a release build to Crashlytics run:
 ./gradlew assembleRelease crashlyticsUploadDistributionRelease
 ```
 
-## New project setup 
+## New project setup
 
 To quickly start a new project from this boilerplate follow the next steps:
 
 * Download this [repository as a zip](https://github.com/ribot/android-boilerplate/archive/master.zip).
-* Change the package name. 
+* Change the package name.
   * Rename packages in main, androidTest and test using Android Studio.
   * In `app/build.gradle` file, `packageName` and `testInstrumentationRunner`.
   * In `src/main/AndroidManifest.xml` and `src/debug/AndroidManifest.xml`.
@@ -159,4 +154,3 @@ To quickly start a new project from this boilerplate follow the next steps:
     See the License for the specific language governing permissions and
     limitations under the License.
 ```
-
