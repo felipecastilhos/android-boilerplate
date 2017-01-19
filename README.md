@@ -20,10 +20,10 @@ Bibliotecas e ferramentas utilizadas:
 - JDK 1.8
 - [Android SDK](http://developer.android.com/sdk/index.html).
 - Android N [(API 25) ](http://developer.android.com/tools/revisions/platforms.html).
-- Latest Android SDK Tools and build tools.
+- Ùltima versão do Android SDK Tools.
 
 
-## Architecture
+## Arquitetura
 
 Esse projeto segue a arquitetura baseada em [MVP (Model View Presenter)](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93presenter). Para saber mais leia [here](https://github.com/ribot/android-guidelines/blob/master/architecture_guidelines/android_architecture.md).
 
@@ -78,26 +78,26 @@ This will run all the code analysis tools and unit tests in the following order:
 
 ![Check Diagram](images/check-task-diagram.png)
 
-## Distribution
+## Distribuição
 
-The project can be distributed using either [Crashlytics](http://support.crashlytics.com/knowledgebase/articles/388925-beta-distributions-with-gradle) or the [Google Play Store](https://github.com/Triple-T/gradle-play-publisher).
+Este projeto pode ser distribuido tanto pelo [Crashlytics](http://support.crashlytics.com/knowledgebase/articles/388925-beta-distributions-with-gradle) quanto pela [Google Play Store](https://github.com/Triple-T/gradle-play-publisher).
 
 ### Play Store
 
-We use the __Gradle Play Publisher__ plugin. Once set up correctly, you will be able to push new builds to
-the Alpha, Beta or production channels like this
+Nós usamos o __Gradle Play Publisher__ plugin. Uma vez configurado corretamente, você será capaz de enviar novas builds para os canais
+Alpha, Beta or produção da seguinte forma:
 
 ```
 ./gradlew publishApkRelease
 ```
-Read [plugin documentation](https://github.com/Triple-T/gradle-play-publisher) for more info.
+Leia [plugin documentation](https://github.com/Triple-T/gradle-play-publisher) para mais informações.
 
 ### Crashlytics
 
-You can also use Fabric's Crashlytics for distributing beta releases. Remember to add your fabric
-account details to `app/src/fabric.properties`.
+Você também pode usar o Fabric's Crashlytics para distribuir beta releases. Lembre de adicionar sua conta do fabric
+para `app/src/fabric.properties`.
 
-To upload a release build to Crashlytics run:
+Para enviar uma build de release para o Crashlytics execute:
 
 ```
 ./gradlew assembleRelease crashlyticsUploadDistributionRelease
@@ -105,22 +105,22 @@ To upload a release build to Crashlytics run:
 
 ## New project setup
 
-To quickly start a new project from this boilerplate follow the next steps:
+Para começar rápidamente um novo projeto apartir deste boilerplate siga os seguintes passos:
 
-* Download this [repository as a zip](https://github.com/ribot/android-boilerplate/archive/master.zip).
-* Change the package name.
-  * Rename packages in main, androidTest and test using Android Studio.
-  * In `app/build.gradle` file, `packageName` and `testInstrumentationRunner`.
-  * In `src/main/AndroidManifest.xml` and `src/debug/AndroidManifest.xml`.
-* Create a new git repository, [see GitHub tutorial](https://help.github.com/articles/adding-an-existing-project-to-github-using-the-command-line/).
-* Replace the example code with your app code following the same architecture.
-* In `app/build.gradle` add the signing config to enable release versions.
-* Add Fabric API key and secret to fabric.properties and uncomment Fabric plugin set up in `app/build.gradle`
-* Update `proguard-rules.pro` to keep models (see TODO in file) and add extra rules to file if needed.
-* Update README with information relevant to the new project.
-* Update LICENSE to match the requirements of the new project.
+* Baixe deste [repositório como zip](https://github.com/ribot/android-boilerplate/archive/master.zip).
+* Alterar o nome do pacote.
+  * Renomear os pacotes na main using Android Studio.
+  * Nos arquivos `app/build.gradle`, `packageName` e `testInstrumentationRunner`.
+  * Também `src/main/AndroidManifest.xml` e `src/debug/AndroidManifest.xml`.
+* Criar um novo repositório.
+* Alterar todos os códigos de exemplo com o seu código seguindo a arquitetura.
+* No `app/build.gradle` adicionar as configurações de signin para liberar versões de release.
+* Adicionar a API Key e a secret Key do Fabric no fabric.properties e descomentar o Fabric plugin no `app/build.gradle`
+* Atualizar `proguard-rules.pro` para manter o modelo (ler os TODO no arquivo) e adicionar regras extras caso necessário.
+* Atualizar o README com informações relevantes para o novo projeto.
+* Atualizar a licença de acordo com os requirementos do novo projeto.
 
-## License
+## Licença
 
 ```
     Copyright 2015 Ribot Ltd.
